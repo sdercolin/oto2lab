@@ -26,18 +26,18 @@ def generate_random_ustobj(d_config):
     l_for_ust.append(up.ust.Note(tag='[#VERSION]'))
     # プロジェクト設定のノートを追加
     ust_setting = up.ust.Note(tag='[#SETTING]')
-    ust_setting.set_by_key('Mode2', 'True')
+    ust_setting['Mode2'] = 'True'
     try:
-        ust_setting.set_by_key('VoiceDir', d_config['voicedir'])
+        ust_setting['VoiceDir'] = d_config['voicedir']
     except KeyError:
-        ust_setting.set_by_key('VoiceDir', r'%VOICE%uta')
+        ust_setting['VoiceDir'] = r'%VOICE%uta'
     try:
-        ust_setting.set_by_key('Tool1', d_config['tool1'])
-        ust_setting.set_by_key('Tool2', d_config['tool2'])
+        ust_setting['Tool1'] = d_config['tool1']
+        ust_setting['Tool2'] = d_config['tool2']
     except KeyError:
-        ust_setting.set_by_key('Tool1', 'wavtool.exe')
-        ust_setting.set_by_key('Tool2', 'resampler.exe')
-    ust_setting.set_by_key('Mode2', 'True')
+        ust_setting['Tool1'] = 'wavtool.exe'
+        ust_setting['Tool2'] = 'resampler.exe'
+    ust_setting.['Mode2'] = 'True'
     l_for_ust.append(ust_setting)
 
     # ノートを一括で生成
